@@ -26,7 +26,7 @@ flat.get('/mates/list', async function (req, res) {
 });
 
 flat.get('/list_all', async function (req, res) {
-  const flats = await Flats.findAll({ include: [{ model: Users, required: true }] });
+  const flats = await Users.findAll({ include: [{ model: Flats, required: true }] });
   res.status(200).json(flats);
 });
 
