@@ -1,47 +1,9 @@
-'use strict';
-module.exports = (sequelize, DataTypes) => {
-  const User = sequelize.define('Flat', {
-    firstName: {
-      type: DataTypes.STRING,
-      allowNull: false
-    },
-    lastName: {
-      type: DataTypes.STRING,
-      allowNull: false
-    },
-    email: {
-      type: DataTypes.STRING,
-      allowNull: false,
-      validate: {
-        isEmail: true
-      }
-    }
-  }, {
-    paranoid: true
-  });
-
-  User.associate = (models) => {
-    User.hasOne(models.Passport, {
-      foreignKey: {
-        name: 'userId',
-        allowNull: false
-      },
-      as: 'passport'
-    });
-  };
-
-  return Flat;
-};
-
-
-
 const { Sequelize, Model, DataTypes } = require('sequelize');
 const sequelize = require('../config/database');
-const { flatmate, image, user } = sequelize.models;
 
-class Flat extends Model {}
+class flat extends Model {}
 
-Flat.init({
+flat.init({
   id: {
     primaryKey: true,
     type: Sequelize.UUID,
@@ -60,7 +22,12 @@ Flat.init({
   }
   },
 }, { 
-  sequelize
+  sequelize,
+  modelName: "flat"
 });
 
-module.exports = Flat;
+flat.associate = function(models) {
+  flat.hasMany(models.users, {as: 'owner'})
+};
+
+module.exports = flat;
