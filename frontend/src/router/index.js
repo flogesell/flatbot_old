@@ -7,18 +7,64 @@ Vue.use(VueRouter);
 const routes = [
   {
     path: "/",
-    name: "Home",
-    component: Home,
+    name: "Login",
+    component: Login,
+  },
+  {
+    path: "/register",
+    name: "Register",
+    component: Register,
+  },
+  {
+    path: "/dashboard",
+    name: "Dashboard",
+    component: Dashboard,
+  },
+  {
+    path: "/statistics",
+    name: "Statistics",
+    component: Statistics,
+  },
+  {
+    path: "/party",
+    name: "Party",
+    component: Party,
+  },
+  {
+    path: "/Flat",
+    name: "Flat",
+    component: Flat,
+  },
+  {
+    path: "/profile",
+    name: "Profile",
+    component: Profile,
+  },
+  {
+    path: "/settings",
+    name: "Settings",
+    component: Settings,
   },
   {
     path: "/about",
     name: "About",
-    // route level code-splitting
-    // this generates a separate chunk (about.[hash].js) for this route
-    // which is lazy-loaded when the route is visited.
-    component: () =>
-      import(/* webpackChunkName: "about" */ "../views/About.vue"),
+    component: About,
   },
+  {
+    path: "/impressum",
+    name: "Impressum",
+    component: Impressum,
+  },
+  {
+    path: "/datasecurity",
+    name: "Datasecurity",
+    component: Datasecurity,
+  },
+  {
+    path: "/cookies",
+    name: "Cookies",
+    component: Cookies,
+  }
 ];
 
 const router = new VueRouter({
