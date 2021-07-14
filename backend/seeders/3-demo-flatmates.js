@@ -4,10 +4,10 @@ const { v4: uuidv4 } = require('uuid');
 
 module.exports = {
   up: async (queryInterface, Sequelize) => {
-    return queryInterface.bulkInsert('flats', [{
-      id: uuidv4(),
-      name: 'Flos Bude',
-      flatmates: "f3752d8c-4702-446a-84f4-110c76607c7b",
+    return queryInterface.bulkInsert('flatmates', [{
+      flat_id: "9792ae4f-9f50-4ebe-befc-9ef81d34e829",
+      user_id: "ef5d2090-8a59-4746-b3a0-efbd2f7fe63e",
+      joinedAt: new Date(),
       createdAt: new Date(),
       updatedAt: new Date()
     }
