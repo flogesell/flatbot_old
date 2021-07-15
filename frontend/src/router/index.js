@@ -1,15 +1,22 @@
 import Vue from "vue";
 import VueRouter from "vue-router";
-import Home from "../views/Home.vue";
+import Login from "../views/Login.vue";
+import Register from "../views/Register.vue";
+import Dashboard from "../views/Dashboard.vue";
+import Statistics from "../views/Statistics.vue";
+import Party from "../views/Party.vue";
+import Flat from "../views/Flat.vue";
+import Profile from "../views/Profile.vue";
+import Settings from "../views/Settings.vue";
+import About from "../views/About.vue";
+import Impressum from "../views/Impressum.vue";
+import Datasecurity from "../views/Datasecurity.vue";
+import Cookies from "../views/Cookies.vue";
+
 
 Vue.use(VueRouter);
 
 const routes = [
-  {
-    path: "/",
-    name: "Login",
-    component: Login,
-  },
   {
     path: "/register",
     name: "Register",
@@ -64,7 +71,12 @@ const routes = [
     path: "/cookies",
     name: "Cookies",
     component: Cookies,
-  }
+  },
+  {
+    path: "/",
+    name: "Login",
+    component: Login,
+  },
 ];
 
 const router = new VueRouter({
