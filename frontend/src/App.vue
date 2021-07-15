@@ -1,14 +1,35 @@
 <template>
   <div id="app">
-    <div id="nav">
-      <router-link to="/">Home</router-link> |
-      <router-link to="/about">About</router-link>
-    </div>
+    <Navigation :route="currentRouteName" v-if="!isLoginOrRegister"/>
     <router-view />
   </div>
 </template>
 
+<script>
+import Navigation from "@/components/Navigation.vue";
+
+export default {
+  name: "App",
+  components: {
+    Navigation
+  },
+  computed: {
+    currentRouteName() {
+        return this.$route.name;
+    },
+    isLoginOrRegister() {
+     return this.$route.name === 'Login' || this.$route.name === 'Register'
+  }
+}
+
+};
+</script>
+
 <style lang="scss">
+body {
+  margin: 0;
+}
+
 #app {
   font-family: Avenir, Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
