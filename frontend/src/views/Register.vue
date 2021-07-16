@@ -27,6 +27,13 @@
         <input id="flatcode" type="flatcode">
         <input type="submit" value="Nächster Schritt" v-on:click="nextStep">
       </form>
+      <form class="login-register-form" id="register-form-3" v-if="currentStep==3">
+        <span class="flatbot-desc ">You have been sent an activation link. Please verify your email</span>
+        <label for="activationcode">Aktivierungscode</label>
+        <input id="activationcode" type="text" v-model="activationcode">
+        <input type="submit" value="Registrierung abschließen" v-on:click="finishRegistration">
+        <span class="route-link">Sende Aktivierungsemail erneut</span>
+      </form>
       <router-link class="route-link" to="/" tag="span">Du hast schon einen Account? Einloggen</router-link>
       <div class="middle-trenner"><hr><span>oder registrier dich mit</span><hr></div>
       <div class="buttons">
@@ -48,6 +55,12 @@ export default {
   data() {
     return {
       currentStep: 1,
+      email: "",
+      password: "",
+      repreatPassword: "",
+      name: "",
+      flatcode: "",
+      activationcode: null
     }
   },
   methods: {
@@ -55,6 +68,13 @@ export default {
     event.preventDefault();
 
     if(this.currentStep !== 3)this.currentStep = ++this.currentStep;
+  },
+  finishRegistration: function (event) {
+    event.preventDefault();
+    if((this.activationcode.length !== null) && this.activationcode === "test") {
+      this.$router.push({ path: '/' })
+    }
+    
   }
 }
 };
