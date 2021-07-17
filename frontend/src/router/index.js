@@ -26,11 +26,17 @@ const router = new VueRouter({
       path: "/register",
       name: "Register",
       component: Register,
+      meta: {
+        guest: true,
+      },
     },
     {
       path: "/login",
       name: "Login",
       component: Login,
+      meta: {
+        guest: true,
+      },
     },
     {
       path: "/",
@@ -116,6 +122,16 @@ router.beforeEach((to, from, next) => {
       next()
     } else {
       next('/login')
+    }
+  } else {
+    next()
+  }
+
+  if (to.matched.some((record) => record.meta.guest)) {
+    if (store.getters.isAuthenticated) {
+      next('/')
+    } else {
+      next()
     }
   } else {
     next()
