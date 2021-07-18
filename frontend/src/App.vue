@@ -44,7 +44,7 @@ body, html {
 .content {
   display: flex;
   flex-direction: column;
-  width: 80%;
+  width: 90%;
   margin: 50px auto;
 }
 
@@ -58,6 +58,11 @@ body, html {
   text-align: left;
   font-weight: 400;
   font-size: 20px;
+}
+
+.flex-col {
+  display: flex;
+  flex-direction: column;
 }
 
 #nav {
