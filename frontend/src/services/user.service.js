@@ -1,5 +1,4 @@
 import axios from 'axios';
-import authHeader from '../helpers';
 
 const url = 'http://localhost:4000/api/';
 export default {
