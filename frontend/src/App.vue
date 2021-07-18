@@ -41,6 +41,25 @@ body, html {
   color: #2c3e50;
 }
 
+.content {
+  display: flex;
+  flex-direction: column;
+  width: 80%;
+  margin: 50px auto;
+}
+
+.content h1.section-header{
+  margin: 0;
+  text-align: left;
+  margin-bottom: 10px;
+}
+
+.content h2.section-header{
+  text-align: left;
+  font-weight: 400;
+  font-size: 20px;
+}
+
 #nav {
   padding: 30px;
 
