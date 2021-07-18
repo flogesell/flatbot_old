@@ -2,7 +2,6 @@
   <div class="dashboard">
     <span>DASHBOARD</span>
     <img :src="image">
-    <button v-on:click="logout">LOGOUT</button>
 
   </div>
 </template>
@@ -26,9 +25,6 @@ export default {
         this.getImage();
   },
   methods: {
-    logout() {
-      this.$store.dispatch('logout');
-    },
     async getImage() {
       const response = await user.getProfileImage();
       this.image = response;
