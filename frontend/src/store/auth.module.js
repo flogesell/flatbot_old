@@ -17,8 +17,8 @@ const actions = {
         commit('SET_USER', user);
         axios.defaults.headers.common['Authorization'] = `Bearer ${token}`;
         },
-    logout: ({ commit }) => {
-        commit('RESET', '');
+    logout: ({ commit, dispatch }) => {
+        commit('LOGOUT');
     }
 };
 const mutations = {
@@ -28,7 +28,7 @@ const mutations = {
     SET_USER: (state, user) => {
         state.user = user;
     },
-    RESET: state => {
+    LOGOUT: state => {
         state.token = null;
         state.user = null;
     }
