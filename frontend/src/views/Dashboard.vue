@@ -1,6 +1,11 @@
 <template>
   <div class="dashboard">
-    <span>DASHBOARD</span>
+    <div class="übersicht">
+      <span>-110€</span>
+    </div>
+    <section class="content">
+      <h1 class="section-header">Juli</h1>
+    </section>
 
   </div>
 </template>
