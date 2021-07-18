@@ -10,13 +10,16 @@ services:
   frontend:
     container_name: flatbot_frontend
     build: ./frontend
+    command: npm run serve
     environment:
       API_URL: http://backend:4000/api
+      CHOKIDAR_USEPOLLING: 'true'
     ports:
       - 8080:8080
     volumes:
       - ./frontend:/data
       - /data/node_modules
+    
 
   backend:
     container_name: flatbot_backend
