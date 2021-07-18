@@ -13,27 +13,27 @@
   <div class="flyout">
     <div class="primary">
       <router-link class="route-link" to="/dashboard" tag="div">
-        <icon class="menu-icon">💻</icon>
+        <span class="menu-icon">💻</span>
         <span class="menu-title">Dashboard</span>
       </router-link>
       <router-link class="route-link" to="/statistics" tag="div">
-        <icon class="menu-icon">📊</icon>
+        <span class="menu-icon">📊</span>
         <span class="menu-title">Statistiken</span>
       </router-link>
       <router-link class="route-link" to="/party" tag="div">
-        <icon class="menu-icon">🎉</icon>
+        <span class="menu-icon">🎉</span>
         <span class="menu-title">Partys</span>
       </router-link>
       <router-link class="route-link" to="/flat" tag="div">
-        <icon class="menu-icon">🏡</icon>
+        <span class="menu-icon">🏡</span>
         <span class="menu-title">Deine Flat</span>
       </router-link>
       <router-link class="route-link" to="/profile" tag="div">
-        <icon class="menu-icon">👤</icon>
+        <span class="menu-icon">👤</span>
         <span class="menu-title">Dein Profil</span>
       </router-link>
       <router-link class="route-link" to="/settings" tag="div">
-        <icon class="menu-icon">⚙️</icon>
+        <span class="menu-icon">⚙️</span>
         <span class="menu-title">Einstellungen</span>
       </router-link>
     </div>
@@ -95,6 +95,7 @@ export default {
 }
 
 @media only screen and (min-width: 1024px) {
+  
   .nav-container {
     .flyout {
       display: flex;
@@ -157,6 +158,10 @@ export default {
 }
 
 @media only screen and (max-width: 1024px) {
+  .nav .menu{
+    display: none;
+  }
+
   .nav-container {
     .flyout {
       display: flex;
@@ -202,10 +207,6 @@ export default {
 
   .left {
     align-items: baseline !important;
-    h1 {
-      text-align: left;
-      padding: 15px;
-    }
   }
 
   .right {
