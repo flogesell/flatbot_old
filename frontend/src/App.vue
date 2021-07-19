@@ -77,4 +77,10 @@ body, html {
     }
   }
 }
+
+@media only screen and (min-width: 1024px) {
+  .content {
+    width: 30%;
+}
+}
 </style>
