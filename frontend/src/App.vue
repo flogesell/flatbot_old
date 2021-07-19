@@ -60,9 +60,31 @@ body, html {
   font-size: 20px;
 }
 
+.center {
+  justify-content: center;
+  align-items: center;
+}
+
+.gap {
+  gap: 15px;
+}
+
+.grow {
+  flex-grow: 1;
+}
+
 .flex-col {
   display: flex;
   flex-direction: column;
+}
+
+.flex-row {
+  display: flex;
+  flex-direction: row;
+}
+
+.full-height {
+  height: 100%;
 }
 
 #nav {
