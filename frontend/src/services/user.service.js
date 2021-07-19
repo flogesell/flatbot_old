@@ -15,7 +15,7 @@ export default {
   },
   getProfileImage() {
     return axios
-      .get(url + 'image/show/')
+      .get(url + 'image/show/1')
       .then(response => {
         return 'data:image/png;base64,' + btoa( new Uint8Array(response.data.data.data).reduce((data, byte) => data + String.fromCharCode(byte), '') );
 
