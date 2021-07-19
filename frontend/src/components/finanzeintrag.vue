@@ -1,47 +1,58 @@
 <template>
-  <div class="flatmate">
-    <img class="profileimage" :src="image">
-    <div class="flex-col flatmate-text">
-      <span class="username">{{user.firstName + " " + user.lastName}}</span>
-      <span class="useremail">{{user.email}}</span>
+  <div :id="id" class="flatmate">
+    <img class="profileimage" :src="image" />
+    <div class="flex-col finanz-info">
+      <span class="username">{{ user.description }}</span>
+      <span class="useremail">{{
+        user.name + " hat " + user.betrag + "€ gezahlt"
+      }}</span>
     </div>
-    <span class="remove icon" v-if="!user.owner">🗑️</span>
-    <span class="owner icon" v-if="user.owner">👑</span>
-  
+    <div class="flex-col finanz-date-price right">
+      <span class="calculated">{{ (user.betrag / 2).toFixed(2) + " €" }}</span>
+      <span class="date">{{ date() }}</span>
+    </div>
   </div>
 </template>
 
 <script>
 // @ is an alias to /src
 //import HelloWorld from "@/components/HelloWorld.vue";
-import userService from '@/services/user.service.js';
+import userService from "@/services/user.service.js";
 
 export default {
   name: "Home",
-  props: ['user'],
-  components: {
-  },
-    data() {
+  props: ["user", "id"],
+  components: {},
+  data() {
     return {
-      image: ''
+      image: "",
     };
   },
-  created: function(){
-        this.getImage();
+  mounted() {},
+  created: function () {
+    this.getImage();
   },
   methods: {
     async getImage() {
       const response = await userService.getProfileImage();
       this.image = response;
-    }
+    },
+    date() {
+      let date = new Date(this.user.date);
+      date =
+        date.getDate() +
+        "." +
+        (((date.getMonth() + 1) < 10) ?  ("0" + ( date.getMonth() + 1)) : (date.getMonth() + 1))  +
+        "." +
+        date.getFullYear().toString().substr(-2);
+      return date;
+    },
   },
-  computed: {
-  }
+  computed: {},
 };
 </script>
 
 <style lang="scss" scoped>
-
 .flatmate {
   display: flex;
   align-items: center;
@@ -64,7 +75,7 @@ export default {
   width: 50px;
   height: 50px;
   object-fit: cover;
-  margin:  0 15px 0 0;
+  margin: 0 15px 0 0;
 }
 
 .icon {
@@ -73,5 +84,34 @@ export default {
   width: 50px;
 }
 
-</style>
+.middle {
+  margin-left: auto;
+}
 
+.right {
+  text-align: right;
+}
+
+.finanz-info {
+  text-align: left;
+  flex-grow: 1;
+}
+
+.insg {
+  align-self: auto;
+  width: 160px;
+}
+
+.calculated {
+  align-self: auto;
+  margin-left: 30px;
+  font-size: 24px;
+  width: 140px;
+  text-align: right;
+  font-weight: 600;
+}
+
+.date {
+  font-weight: 200;
+}
+</style>
