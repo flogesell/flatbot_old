@@ -106,7 +106,6 @@ export default {
   align-self: auto;
   margin-left: 30px;
   font-size: 24px;
-  width: 140px;
   text-align: right;
   font-weight: 600;
 }
