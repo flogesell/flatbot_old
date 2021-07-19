@@ -1,6 +1,6 @@
 import Vue from "vue";
 import VueRouter from "vue-router";
-import store from '../store';
+import store from "../store";
 
 import Login from "../views/Login.vue";
 import Register from "../views/Register.vue";
@@ -14,7 +14,6 @@ import About from "../views/About.vue";
 import Impressum from "../views/Impressum.vue";
 import Datasecurity from "../views/Datasecurity.vue";
 import Cookies from "../views/Cookies.vue";
-
 
 Vue.use(VueRouter);
 
@@ -109,33 +108,33 @@ const router = new VueRouter({
         requiresAuth: false,
       },
     },
-    { 
-      path: '*',
-      redirect: '/' 
-    }
-  ]
+    {
+      path: "*",
+      redirect: "/",
+    },
+  ],
 });
 
 router.beforeEach((to, from, next) => {
   if (to.matched.some((record) => record.meta.requiresAuth)) {
     if (store.getters.isAuthenticated) {
-      next()
+      next();
     } else {
-      next('/login')
+      next("/login");
     }
   } else {
-    next()
+    next();
   }
 
   if (to.matched.some((record) => record.meta.guest)) {
     if (store.getters.isAuthenticated) {
-      next('/')
+      next("/");
     } else {
-      next()
+      next();
     }
   } else {
-    next()
+    next();
   }
-})
+});
 
 export default router;

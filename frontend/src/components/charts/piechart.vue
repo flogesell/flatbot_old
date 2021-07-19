@@ -1,18 +1,16 @@
 <script>
-import { Pie } from 'vue-chartjs'
+import { Pie } from "vue-chartjs";
 
 export default {
   extends: Pie,
   data() {
-    return {
-    }
+    return {};
   },
-  props: ['data', 'options'],
-  mounted () {
-    this.renderChart(this.data, this.chartOptions)
-  }
-}
+  props: ["data", "options"],
+  mounted() {
+    this.renderChart(this.data, this.chartOptions);
+  },
+};
 </script>
 
-<style>
-</style>
+<style></style>

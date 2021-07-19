@@ -10,7 +10,6 @@
 
 export default {
   name: "Datasecurity",
-  components: {
-  },
+  components: {},
 };
 </script>

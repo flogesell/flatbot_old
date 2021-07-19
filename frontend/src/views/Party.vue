@@ -10,7 +10,6 @@
 
 export default {
   name: "Party",
-  components: {
-  },
+  components: {},
 };
 </script>

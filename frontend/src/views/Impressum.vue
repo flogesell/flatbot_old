@@ -10,7 +10,6 @@
 
 export default {
   name: "Impressum",
-  components: {
-  },
+  components: {},
 };
 </script>

@@ -10,7 +10,6 @@
 
 export default {
   name: "Cookies",
-  components: {
-  },
+  components: {},
 };
 </script>
