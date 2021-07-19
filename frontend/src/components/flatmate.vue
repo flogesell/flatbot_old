@@ -1,47 +1,43 @@
 <template>
   <div class="flatmate">
-    <img class="profileimage" :src="image">
+    <img class="profileimage" :src="image" />
     <div class="flex-col flatmate-text">
-      <span class="username">{{user.firstName + " " + user.lastName}}</span>
-      <span class="useremail">{{user.email}}</span>
+      <span class="username">{{ user.firstName + " " + user.lastName }}</span>
+      <span class="useremail">{{ user.email }}</span>
     </div>
     <span class="remove icon" v-if="!user.owner">🗑️</span>
     <span class="owner icon" v-if="user.owner">👑</span>
-  
   </div>
 </template>
 
 <script>
 // @ is an alias to /src
 //import HelloWorld from "@/components/HelloWorld.vue";
-import userService from '@/services/user.service.js';
+import userService from "@/services/user.service.js";
 
 export default {
   name: "Home",
-  props: ['user'],
-  components: {
-  },
-    data() {
+  props: ["user"],
+  components: {},
+  data() {
     return {
-      image: ''
+      image: "",
     };
   },
-  created: function(){
-        this.getImage();
+  created: function () {
+    this.getImage();
   },
   methods: {
     async getImage() {
       const response = await userService.getProfileImage();
       this.image = response;
-    }
+    },
   },
-  computed: {
-  }
+  computed: {},
 };
 </script>
 
 <style lang="scss" scoped>
-
 .flatmate {
   display: flex;
   align-items: center;
@@ -64,7 +60,7 @@ export default {
   width: 50px;
   height: 50px;
   object-fit: cover;
-  margin:  0 15px 0 0;
+  margin: 0 15px 0 0;
 }
 
 .icon {
@@ -72,6 +68,4 @@ export default {
   margin-left: auto;
   width: 50px;
 }
-
 </style>
-
