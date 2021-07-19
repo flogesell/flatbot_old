@@ -83,6 +83,8 @@ export default {
   -webkit-box-shadow: 0px 0px 9px 3px rgba(41, 41, 41, 0.25);
   -moz-box-shadow: 0px 0px 9px 3px rgba(41, 41, 41, 0.25);
   box-shadow: 0px 0px 9px 3px rgba(41, 41, 41, 0.25);
+  position: relative;
+  z-index: 1000;
 }
 
 .nav .container {
