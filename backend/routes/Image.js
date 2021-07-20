@@ -13,10 +13,9 @@ image.get('/list', async function (req, res) {
     res.status(200).json(images);
 });
 
-image.get('/show/:id', authentificate, async function (req, res) {
-    const id = req.params.id;
+image.get('/profileimage/', authentificate, async function (req, res) {
     const account = await User.findOne({ where: { id: req.user.id } });
-    const images = await Image.findOne({ where: { id: id } });
+    const images = await Image.findOne({ where: { user_id: account.id } });
     res.status(200).json(images);
 });
 
