@@ -9,15 +9,14 @@ const upload = require('../middleware/upload.js');
 const uploadController = require('../controllers/upload.controller.js');
 
 image.get('/list', async function (req, res) {
-    const images = await Image.findAll();
+    const images = await Image.findAll({attributes: ['id', 'user_id', 'name']});
     res.status(200).json(images);
 });
 
-image.get('/show/:id', authentificate, async function (req, res) {
-    const id = req.params.id;
+image.get('/profileimage/', authentificate, async function (req, res) {
     const account = await User.findOne({ where: { id: req.user.id } });
-    const images = await Image.findOne({ where: { id: id } });
-    res.status(200).json(images);
+    const image = await Image.findOne({ where: { user_id: account.id }} );
+    res.status(200).json(image);
 });
 
 image.post("/upload", upload.single("file"), uploadController.uploadFiles);

@@ -11,6 +11,7 @@ const uploadFiles = async (req, res) => {
     }
 
     Image.create({
+      user_id: req.data.user_id,
       name: req.file.originalname,
       data: fs.readFileSync(
         __basedir + "/uploads/" + req.file.filename

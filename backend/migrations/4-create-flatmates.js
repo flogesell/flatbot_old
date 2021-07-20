@@ -2,6 +2,11 @@
 module.exports = {
   up: async (queryInterface, Sequelize) => {
     await queryInterface.createTable('flatmates', {
+      id: {
+        primaryKey: true,
+        autoIncrement:  true,
+        type: Sequelize.INTEGER
+      },
       flat_id: {
         type: Sequelize.UUID,
         allowNull:  false,

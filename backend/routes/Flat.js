@@ -20,14 +20,22 @@ flat.get('/list', async function (req, res) {
     res.status(200).json(flats);
 });
 
-flat.get('/mates/list', async function (req, res) {
-  const flatmates = await Flatmates.findAll();
-  res.status(200).json(flatmates);
+flat.get('/info', authentificate, async function (req, res) {
+  const id = req.user.id;
+  const flat = await Flats.findOne({ where: { owner: id } });
+  res.status(200).json(flat);
 });
 
-flat.get('/list_all', async function (req, res) {
-  const flats = await Users.findAll({ include: [{ model: Flats, required: true }] });
-  res.status(200).json(flats);
+flat.get('/mates/list', async function (req, res) {
+  const flatMates = await Flatmates.findAll()
+  res.status(200).json(flatMates);
+});
+
+flat.get('/mates', authentificate, async function (req, res) {
+  const id = req.user.id;
+  let mates = [];
+
+  res.status(200).json(mates);
 });
 
 module.exports = flat;

@@ -9,6 +9,15 @@ image.init({
         primaryKey:     true,
         autoIncrement:  true
     },
+    user_id: {
+        type:           Sequelize.UUID,
+        allowNull:      false,
+        unique:         true,
+        references: {
+            model:  'users',
+            key:    'id'
+        }
+    },
     name: {  
         type:       Sequelize.STRING(30),
         allowNull:  false,
