@@ -166,7 +166,8 @@ span.route-link   {
 .middle-trenner {
   display: flex;
   width: 100%;
-  margin-top: 25px;
+  margin-top: 15px;
+  align-items: center;
 }
 
 .middle-trenner hr {
@@ -181,7 +182,7 @@ span.route-link   {
   display: flex;
   width: 100%;
   margin: 0 -5px;
-  margin-top: 25px;
+  margin-top: 20px;
 }
 
 .buttons button {
