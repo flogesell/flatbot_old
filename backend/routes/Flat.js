@@ -26,11 +26,16 @@ flat.get('/info', authentificate, async function (req, res) {
   res.status(200).json(flat);
 });
 
-flat.get('/mates', async function (req, res) {
-  const flat = await Flats.findAll({
-    where: { id: req.user.id }
-  });
-  res.status(200).json(flat);
+flat.get('/mates/list', async function (req, res) {
+  const flatMates = await Flatmates.findAll()
+  res.status(200).json(flatMates);
+});
+
+flat.get('/mates', authentificate, async function (req, res) {
+  const id = req.user.id;
+  let mates = [];
+
+  res.status(200).json(mates);
 });
 
 module.exports = flat;
