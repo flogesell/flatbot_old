@@ -14,6 +14,7 @@ import About from "../views/About.vue";
 import Impressum from "../views/Impressum.vue";
 import Datasecurity from "../views/Datasecurity.vue";
 import Cookies from "../views/Cookies.vue";
+import Invite from "../views/Invite.vue";
 
 Vue.use(VueRouter);
 
@@ -36,6 +37,11 @@ const router = new VueRouter({
       meta: {
         guest: true,
       },
+    },
+    {
+      path: "/invite/:invite_id",
+      name: "Invite",
+      component: Invite,
     },
     {
       path: "/",
