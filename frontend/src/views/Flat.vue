@@ -2,7 +2,20 @@
   <div class="flat">
     <section class="content">
       <h1 class="section-header">Deine Flat</h1>
-      <h2 class="section-header">Name</h2>
+      <div class="flex-row flat-info">
+        <span class="flat-label">Name</span>
+        <span class="flat-value right">Flos Wohnung</span>
+      </div>
+      <div class="flex-row flat-info">
+        <span class="flat-label">Währung</span>
+        <span class="flat-value right">€ Euro</span>
+      </div>
+      
+    </section>
+    <section class="content">
+      <h1 class="section-header">Deine Invitecode</h1>
+      <inviteCode :code="invitecode" type="flat" />
+      <span class="invitecode">{{invitecode}}</span>
     </section>
     <section class="content">
       <h1 class="section-header">Deine Flatmates</h1>
@@ -11,6 +24,7 @@
         :key="flatmate.id"
         :user="flatmate"
       />
+      
     </section>
   </div>
 </template>
@@ -19,14 +33,17 @@
 // @ is an alias to /src
 //import HelloWorld from "@/components/HelloWorld.vue";
 import Flatmate from "@/components/flatmate.vue";
+import inviteCode from '@/components/inviteCode.vue'
 
 export default {
   name: "Flat",
   components: {
     Flatmate,
+    inviteCode,
   },
   data() {
     return {
+      invitecode: "0bba4745",
       flatmates: [
         {
           id: "0bba4745-9830-4d39-a686-74312bcfc936",
@@ -53,3 +70,25 @@ export default {
   computed: {},
 };
 </script>
+
+<style lang="scss" scoped>
+.flat-info:not(.flat-info:first-child) {
+  margin-top: 15px;
+}
+
+.flat-label {
+  font-family: 'Montserrat SemiBold';
+}
+
+.flat-value {
+  font-family: 'Montserrat';
+  font-size: 18px;
+}
+
+.invitecode {
+  margin-top: 15px;
+  font-family: 'Montserrat';
+  font-size: 22px;
+}
+
+</style>
