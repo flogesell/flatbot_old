@@ -1,6 +1,15 @@
 <template>
   <div class="settings">
-    <span>Settings</span>
+    <section class="content">
+      <h1 class="section-header">Allgemein</h1>
+
+    </section>
+    <section class="content">
+      <h1 class="section-header">Account</h1>
+      <span class="text-action">Abmelden</span>
+      <span class="text-action">Account löschen</span>
+      
+    </section>
   </div>
 </template>
 

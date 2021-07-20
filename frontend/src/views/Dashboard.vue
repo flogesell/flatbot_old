@@ -1,7 +1,7 @@
 <template>
   <div class="dashboard">
     <div class="quick-view">
-      <div class="flex-row center full-height">
+      <div class="flex-row center full-height flex-container">
         <div class="flex-col grow" style="width: 50%; padding: 15px;"><span class="dashboard-desc">Du schuldest</span><span class="dashboard-money">- 40,33€</span></div>
         <div class="flex-col grow" style="width: 50%; padding: 15px;"><span class="dashboard-desc">Gesamte Ausgaben</span><span class="dashboard-money">40,33€</span></div>
       </div>
@@ -47,7 +47,7 @@ export default {
           date: Date.now(),
         },
         {
-          id: "ef5d2090-8a59-4746-b3afdf0-efbd2f7fe63e",
+          id: "ef5d2090-8a59-4746-b3afdf0-easfasd2f7fe63e",
           name: "Liz",
           description: "Netto",
           betrag: 10.77,
@@ -82,7 +82,7 @@ export default {
           date: Date.now(),
         },
         {
-          id: "ef5d2090-8a59-4746-b3afdf0-efbd2f7fe63e",
+          id: "ef5d2090-8afasdfasd9-4746-b3afdf0-efbd2f7fe63e",
           name: "Liz",
           description: "Netto",
           betrag: 10.77,
@@ -101,6 +101,11 @@ export default {
   background: #219ed6;
   height: 200px;
   position: relative;
+
+  .flex-container {
+    width: 30%;
+    margin: 0 auto;
+  }
 }
 
 .addBill {
@@ -148,4 +153,18 @@ export default {
   font-size: 2em;
   color: white;
 }
+
+
+
+@media only screen and (max-width: 1024px) {
+  .quick-view {
+    width: 100%;
+
+    .flex-container {
+    width: 100%;
+    margin: 0 auto;
+  }
+  }
+}
+
 </style>
