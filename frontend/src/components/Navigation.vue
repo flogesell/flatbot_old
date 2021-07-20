@@ -36,18 +36,6 @@
           <span class="menu-title">Einstellungen</span>
         </router-link>
       </div>
-      <div class="misc-links">
-        <span class="route-link" v-on:click="logout()">Logout</span>
-        <router-link class="route-link" to="/impressum" tag="span"
-          >Impressum</router-link
-        >
-        <router-link class="route-link" to="/datasecurity" tag="span"
-          >Datenschutzerklärung</router-link
-        >
-        <router-link class="route-link" to="/cookies" tag="span"
-          >Cookies</router-link
-        >
-      </div>
     </div>
   </div>
 </template>
@@ -95,6 +83,7 @@ export default {
 .nav .menu {
   margin-left: auto;
   padding: 20px;
+  display: none;
 }
 
 .nav .route {
@@ -105,11 +94,10 @@ export default {
   .nav-container {
     .flyout {
       display: flex;
-      flex-direction: column;
-      width: 20%;
-      height: calc(100% - 80px);
-      position: absolute;
-      right: 0;
+      flex-direction: row;
+      width: 100%;
+      position: fixed;
+      bottom: 0;
       background-color: #219ed6;
       color: white;
       font-size: 24px;
@@ -119,22 +107,23 @@ export default {
   .flyout {
     .primary {
       display: flex;
-      flex-direction: column;
+      flex-direction: row;
       align-items: center;
       margin: auto;
-      width: 80%;
+      width: 60%;
     }
     .primary .route-link {
       display: flex;
-      flex-direction: row;
+      flex-direction: column;
       margin: 15px 0;
       text-align: left;
       width: 100%;
-      align-items: baseline;
+      align-items: center;
       cursor: pointer;
 
       .menu-title {
-        margin-left: 18px;
+        margin-top: 6px;
+        font-size: 16px;
       }
     }
     .misc-links {
@@ -203,7 +192,6 @@ export default {
 
       .menu-icon {
         font-size: 24px;
-        filter: grayscale(1);
       }
     }
     .misc-links {
