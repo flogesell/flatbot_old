@@ -1,8 +1,7 @@
 <script>
-import { Pie } from "vue-chartjs";
+//import { Pie } from "vue-chartjs";
 
 export default {
-  extends: Pie,
   data() {
     return {};
   },

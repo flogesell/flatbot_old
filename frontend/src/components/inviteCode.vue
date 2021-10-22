@@ -1,8 +1,9 @@
 <template>
-  <qrcode-vue :value="this.inviteId()" :foreground="foreground" :size="size" level="H" />
+  <!--<qrcode-vue :value="this.inviteId()" :foreground="foreground" :size="size" level="H" />-->
+  <div></div>
 </template>
 <script>
-  import QrcodeVue from 'qrcode.vue'
+  //import QrcodeVue from 'vue-qrcode'
 
   export default {
     props: ["code","type"],
@@ -19,7 +20,7 @@
         }
     },
     components: {
-      QrcodeVue,
+      //QrcodeVue,
     },
   }
 </script>

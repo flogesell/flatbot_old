@@ -1,5 +1,5 @@
 <script>
-import { Bar } from "vue-chartjs";
+//import { Bar } from "vue-chartjs";
 
 const options = {
   responsive: true,
@@ -39,7 +39,7 @@ const options = {
 };
 
 export default {
-  extends: Bar,
+  //extends: Bar,
   data() {
     return {};
   },
