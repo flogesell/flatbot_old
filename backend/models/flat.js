@@ -1,5 +1,7 @@
+
 const { Sequelize, Model, DataTypes } = require('sequelize');
 const sequelize = require('../config/database');
+const user = require('./user')
 
 class flat extends Model {}
 
@@ -19,15 +21,13 @@ flat.init({
     references: {
       model:  'users',
       key:    'id'
+    }
   }
-  },
 }, { 
   sequelize,
-  modelName: "flat"
+  freezeTableName: true
 });
 
-flat.associate = function(models) {
-  flat.hasMany(models.users, {as: 'owner'})
-};
+flat.hasOne(user, { foreignKey: 'owner' });
 
 module.exports = flat;
