@@ -2,14 +2,21 @@
 module.exports = {
   up: async (queryInterface, Sequelize) => {
     await queryInterface.createTable('flatmates', {
+      id: {
+        primaryKey: true,
+        autoIncrement:  true,
+        type: Sequelize.INTEGER
+      },
       flat_id: {
+        type: Sequelize.UUID,
         allowNull:  false,
         references: {
           model:  'flats',
           key:    'id'
         }
       },
-      flat_id: {
+      user_id: {
+        type: Sequelize.UUID,
         allowNull:  false,
         references: {
           model:  'users',
@@ -31,6 +38,6 @@ module.exports = {
     });
   },
   down: async (queryInterface, Sequelize) => {
-    await queryInterface.dropTable('flats');
+    await queryInterface.dropTable('flatmates');
   }
 };

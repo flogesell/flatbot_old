@@ -3,6 +3,8 @@ const app = express();
 const cors = require("cors");
 const db = require('./config/database');
 
+global.__basedir = __dirname;
+
 async function main() {
   const { PORT } = process.env;
 
@@ -16,6 +18,9 @@ async function main() {
 
   const Flat = require("./routes/Flat");
   app.use("/api/flat", Flat);
+
+  const Image = require("./routes/Image");
+  app.use("/api/image", Image);
 
   const port = PORT || 4000;
 

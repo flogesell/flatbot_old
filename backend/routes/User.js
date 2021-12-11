@@ -1,11 +1,14 @@
 const express = require("express");
 const auth = express.Router();
 const db = require('../config/database');
-const Users = require('../models/user')
+const User = require('../models/user')
+const image = require('../models/image')
+const flat = require("../models/image");
 
 
 const jwt = require('jsonwebtoken');
-const authentificate = require('../middleware/authentification')
+const authentificate = require('../middleware/authentification');
+
 
 const { SECRET } = process.env;
 
@@ -24,15 +27,13 @@ auth.post('/login', async function (req, res) {
     const account = await User.findOne({ where: { email: email} });
     if (account) {
       if (await account.validPassword(password)) {
-          // Generate an access token
-          const accessToken = jwt.sign({ id: account.id }, SECRET);
+          const accessToken = jwt.sign({ id: account.id, id: account.id }, SECRET);
           const account_data =
           {
             'id':         account.id,
             'firstName':  account.firstName,
             'lastName':   account.lastName,
-            'email':      account.email,
-            'isAdmin':    account.isAdmin
+            'email':      account.email
           }
           res.send({accessToken, account_data});
       } else {
@@ -73,7 +74,7 @@ auth.post('/register', async function (req, res) {
 
 // LIST ALL USER
 auth.get('/list', async function (req, res) {
-    res.status(200).json(await Users.findAll(), null, 2);
+    res.status(200).json(await User.findAll({include: flat}), null, 2);
 });
 
 // EDIT USER

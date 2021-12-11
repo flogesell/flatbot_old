@@ -1,20 +1,32 @@
 const { Sequelize, Model, DataTypes } = require('sequelize');
 const sequelize = require('../config/database');
+const user = require('./user');
 
-class enum_category extends Model {};
+class image extends Model {};
 
-enum_category.init({
+image.init({
     id: {
         type:           Sequelize.INTEGER,
         primaryKey:     true,
         autoIncrement:  true
     },
+    user_id: {
+        type:           Sequelize.UUID,
+        allowNull:      false,
+        unique:         true,
+        references: {
+            model:  'users',
+            key:    'id'
+        }
+    },
     name: {  
         type:       Sequelize.STRING(30),
         allowNull:  false,
-        unique:     true
-    }
-}, { sequelize, modelName: "enum_category" });
+    },
+    data: {
+        type: DataTypes.BLOB("long"),
+    },
+}, { sequelize, modelName: "images" });
 
-module.exports = enum_category;
 
+module.exports = image;

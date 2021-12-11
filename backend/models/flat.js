@@ -1,9 +1,9 @@
 const { Sequelize, Model, DataTypes } = require('sequelize');
 const sequelize = require('../config/database');
 
-class flats extends Model {}
+class flat extends Model {}
 
-flats.init({
+flat.init({
   id: {
     primaryKey: true,
     type: Sequelize.UUID,
@@ -14,12 +14,20 @@ flats.init({
     allowNull:  false
   },
   owner: {
-    type: Sequelize.UUIDV4,
+    type: DataTypes.UUID,
     allowNull:  false,
+    references: {
+      model:  'users',
+      key:    'id'
+  }
   },
 }, { 
-  sequelize, 
-  modelName: "flats"
+  sequelize,
+  modelName: "flat"
 });
 
-module.exports = flats;
+flat.associate = function(models) {
+  flat.hasMany(models.users, {as: 'owner'})
+};
+
+module.exports = flat;

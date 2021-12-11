@@ -12,8 +12,12 @@ module.exports = {
         allowNull:  false
       },
       owner: {
-        type: Sequelize.UUIDV4,
+        type: Sequelize.UUID,
         allowNull:  false,
+        references: {
+          model:  'users',
+          key:    'id'
+        }
       },
       createdAt: {
         allowNull: false,

@@ -2,17 +2,27 @@
 module.exports = {
   up: async (queryInterface, Sequelize) => {
     await queryInterface.createTable('images', {
-        id: {
-          type:           Sequelize.INTEGER,
-          primaryKey:     true,
-          autoIncrement:  true
+      id: {
+        type:           Sequelize.INTEGER,
+        primaryKey:     true,
+        autoIncrement:  true
       },
-      name: {
+      user_id: {
+        type:           Sequelize.UUID,
+        allowNull:      false,
+        unique:         true,
+        references: {
+            model:  'users',
+            key:    'id'
+        }
+      },
+      name: {  
           type:       Sequelize.STRING(30),
           allowNull:  false,
-          unique:     true
       },
-      image:  Sequelize.TEXT,
+      data: {
+          type: Sequelize.BLOB("long"),
+      },
       createdAt: {
         allowNull: false,
         type: Sequelize.DATE
