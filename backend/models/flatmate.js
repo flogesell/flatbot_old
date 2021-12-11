@@ -36,11 +36,4 @@ flatmates.init({
   modelName: "flatmate"
 });
 
-flatmates.hasOne(flat, {
-    foreignKey: 'flat_id'
-  });
-flatmates.hasOne(user, {
-    foreignKey: 'user_id'
-  });
-
 module.exports = flatmates;

@@ -1,7 +1,6 @@
 const { Sequelize, Model, DataTypes } = require('sequelize');
 const sequelize = require('../config/database');
 const bcrypt = require('bcrypt');
-const image = require('./image');
 
 class user extends Model {};
 
@@ -61,7 +60,5 @@ user.password = await bcrypt.hash(user.password, salt);
 user.prototype.validPassword = async function(password) {
     return await bcrypt.compare(password, this.password);
 }
-
-user.hasOne(image,  {foreignKey: 'user_id'});
 
 module.exports = user;

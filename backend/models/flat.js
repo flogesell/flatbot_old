@@ -28,6 +28,6 @@ flat.init({
   freezeTableName: true
 });
 
-flat.hasOne(user, { foreignKey: 'owner' });
+flat.belongsTo(user);
 
 module.exports = flat;
