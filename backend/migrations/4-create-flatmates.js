@@ -7,7 +7,7 @@ module.exports = {
         autoIncrement:  true,
         type: Sequelize.INTEGER
       },
-      flat_id: {
+      /*flat_id: {
         type: Sequelize.UUID,
         allowNull:  false,
         references: {
@@ -22,7 +22,7 @@ module.exports = {
           model:  'users',
           key:    'id'
         }
-      },
+      },*/
       joinedAt: {
         allowNull: false,
         type: Sequelize.DATE

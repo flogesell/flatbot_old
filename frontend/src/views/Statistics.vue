@@ -54,8 +54,13 @@ export default {
   }
   },
   components: {
+<<<<<<< HEAD
     Piechart,
     monthlyBills
+=======
+    //Piechart,
+    //monthlyBills
+>>>>>>> backend
   },
 };
 </script>

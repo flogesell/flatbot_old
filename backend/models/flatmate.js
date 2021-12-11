@@ -1,5 +1,7 @@
 const { Sequelize, Model, DataTypes } = require('sequelize');
 const sequelize = require('../config/database');
+const user = require('./user');
+const flat = require('./flat')
 
 class flatmates extends Model {}
 
@@ -10,21 +12,21 @@ flatmates.init({
     type: Sequelize.INTEGER
   },
   flat_id: {
-      type: Sequelize.UUID,
-      allowNull:  false,
-      references: {
-        model:  'flats',
-        key:    'id'
-      }
-    },
-    user_id: {
-      type: Sequelize.UUID,
-      allowNull:  false,
-      references: {
-        model:  'users',
-        key:    'id'
-      }
-    },
+    type: Sequelize.UUID,
+    allowNull:  false,
+    references: {
+      model:  'flats',
+      key:    'id'
+    }
+  },
+  user_id: {
+    type: Sequelize.UUID,
+    allowNull:  false,
+    references: {
+      model:  'users',
+      key:    'id'
+    }
+  },
   joinedAt: {
       allowNull: false,
       type: Sequelize.DATE
@@ -34,8 +36,11 @@ flatmates.init({
   modelName: "flatmate"
 });
 
-flatmates.associate = function(models) {
-  user.belongsTo(models.flatmate, {foreignKey: 'id'});
-}
+flatmates.hasOne(flat, {
+    foreignKey: 'flat_id'
+  });
+flatmates.hasOne(user, {
+    foreignKey: 'user_id'
+  });
 
 module.exports = flatmates;
