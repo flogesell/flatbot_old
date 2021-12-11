@@ -6,18 +6,15 @@
     <div class="container">
       <div class="login-wrapper">
         <h1>Einloggen</h1>
-        <div class="buttons">
-          <button class="apple">
-            <img class="icon" src="@/assets/icons/apple.svg">
-            Mit Apple anmelden
-          </button>
-          <button class="email" @click="emailLogin">
-           <span> Mit Email anmelden</span>
-          </button>
-        </div>
+        <form class="login-register-form" @submit.prevent="login">
+          <label for="email">Email</label>
+          <input id="email" type="email" v-model="username">
+          <label for="email">Passwort</label>
+          <input id="password" type="password" v-model="password">
+          <input id="submit" class="submit" type="submit" value="Login">
+      </form>
         <div class="links">
           <router-link class="route-link" to="/forgotpassword" tag="span">Passwort vergessen?</router-link>
-          <router-link class="route-link" to="/register" tag="span">Keinen Account? Registrieren</router-link>
         </div>
       </div>
     </div>
@@ -25,18 +22,36 @@
 </template>
 
 <script>
+// @ is an alias to /src
+//import HelloWorld from "@/components/HelloWorld.vue";
+import auth from '@/services/user.service.js';
 
 export default { 
   name: "Login",
   components: {},
   data() {
     return {
-
+      username: '',
+      password: '',
+      msg: ''
     };
   },
   methods: {
-    emailLogin() {
-      this.$router.push('/login-email');
+    async login() {
+      try {
+        const credentials = {
+          email: this.username,
+          password: this.password
+        };
+        const response = await auth.login(credentials);
+        this.msg = response.data;
+        const token = response.accessToken;
+        const user = response.account_data;
+        this.$store.dispatch('login', { token, user });
+        this.$router.push('/');
+      } catch (error) {
+        this.msg = error;
+      }
     }
   }
 };
@@ -87,6 +102,33 @@ export default {
   }
 }
 
+.login-register-form {
+  display: flex;
+  flex-direction: column;
+  text-align: left;
+  input {
+    margin-bottom: 10px;
+    height: 40px;
+    width: 100%;
+    border: 1px solid $ui-grey;
+    border-radius: 5px;
+    box-sizing: border-box;
+  }
+  .submit {
+    cursor: pointer;
+    padding: 10px;
+    height: 40px;
+    border: none;
+    border-radius: 5px;
+    font-size: 1em;
+    color: white;
+    font-family: sans-serif;
+    background: linear-gradient(45deg, #3382F8, #3FB6FB );
+  }
+  .icon {
+    width: 16px;
+  }
+}
 
 
 span.route-link   {
@@ -99,6 +141,7 @@ span.route-link   {
   flex-direction: column;
   gap: 20px;
   width: 100%;
+  margin: 0 -5px;
   margin-top: 20px;
 }
 
@@ -109,6 +152,8 @@ span.route-link   {
   border: none;
   border-radius: 5px;
   font-size: 1em;
+  flex: auto;
+  margin: 0 5px;
   align-content: space-between;
   color: white;
   font-family: sans-serif;
@@ -170,4 +215,5 @@ span.route-link   {
 .loading-dots .dots:nth-child(2) {
   margin: 0 auto;
 }
+
 </style>

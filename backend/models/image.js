@@ -1,5 +1,6 @@
 const { Sequelize, Model, DataTypes } = require('sequelize');
 const sequelize = require('../config/database');
+const user = require('./user');
 
 class image extends Model {};
 
@@ -26,5 +27,6 @@ image.init({
         type: DataTypes.BLOB("long"),
     },
 }, { sequelize, modelName: "images" });
+
 
 module.exports = image;

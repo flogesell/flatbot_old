@@ -12,27 +12,23 @@
     <div class="flyout">
       <div class="primary">
         <router-link class="route-link" to="/dashboard" tag="div">
-          <span class="menu-icon">💻</span>
+          <span class="menu-icon"><i class="fas fa-home"></i></span>
           <span class="menu-title">Dashboard</span>
         </router-link>
         <router-link class="route-link" to="/statistics" tag="div">
-          <span class="menu-icon">📊</span>
+          <span class="menu-icon"><i class="fas fa-chart-pie"></i></span>
           <span class="menu-title">Statistiken</span>
         </router-link>
         <router-link class="route-link" to="/party" tag="div">
-          <span class="menu-icon">🎉</span>
+          <span class="menu-icon"><i class="fas fa-calendar"></i></span>
           <span class="menu-title">Partys</span>
         </router-link>
         <router-link class="route-link" to="/flat" tag="div">
-          <span class="menu-icon">🏡</span>
+          <span class="menu-icon"><i class="fas fa-house-user"></i></span>
           <span class="menu-title">Deine Flat</span>
         </router-link>
-        <router-link class="route-link" to="/profile" tag="div">
-          <span class="menu-icon">👤</span>
-          <span class="menu-title">Dein Profil</span>
-        </router-link>
         <router-link class="route-link" to="/settings" tag="div">
-          <span class="menu-icon">⚙️</span>
+          <span class="menu-icon"><i class="fas fa-cog"></i></span>
           <span class="menu-title">Einstellungen</span>
         </router-link>
       </div>
@@ -52,17 +48,18 @@ export default {
     };
   },
   methods: {
-    logout() {
-      this.$store.dispatch("logout");
-      this.$router.push("/login");
-    },
+
   },
 };
 </script>
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped lang="scss">
+@import "@/assets/styles/variables.scss";
+
 .nav {
+  position: sticky;
+  top: 0px;
   height: 60px;
   max-width: 100%;
   display: flex;
@@ -71,7 +68,6 @@ export default {
   -webkit-box-shadow: 0px 0px 9px 3px rgba(41, 41, 41, 0.25);
   -moz-box-shadow: 0px 0px 9px 3px rgba(41, 41, 41, 0.25);
   box-shadow: 0px 0px 9px 3px rgba(41, 41, 41, 0.25);
-  position: relative;
   z-index: 1000;
 }
 
@@ -88,6 +84,9 @@ export default {
 
 .nav .route {
   padding: 10px;
+  h1 {
+    margin: 0;
+  }
 }
 
 @media only screen and (min-width: 1024px) {
@@ -165,7 +164,10 @@ export default {
       height: 70px;
       position: fixed;
       bottom: 0;
-      background-color: grey;
+      border-radius: 10px 10px 0 0;
+      background-color: white;
+      -webkit-box-shadow: 0px 2px 30px 5px #333333; 
+      box-shadow: 0px 2px 30px 5px #333333;
       color: white;
     }
   }
@@ -175,23 +177,26 @@ export default {
       display: flex;
       flex-direction: row;
       align-items: center;
-      margin: auto;
       width: 100%;
+      height: 100%;
     }
     .primary .route-link {
       display: flex;
       flex-direction: column;
-      align-items: center;
       width: 100%;
+      height: 100%;
       align-items: center;
+      justify-content: center;
       cursor: pointer;
 
       .menu-title {
         font-size: 10px;
+        display: none;
       }
 
       .menu-icon {
         font-size: 24px;
+        color: $ui-grey;
       }
     }
     .misc-links {

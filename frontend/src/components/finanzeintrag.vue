@@ -69,6 +69,7 @@ export default {
 
 .useremail {
   font-weight: 100;
+  font-size: 0.8em;
 }
 
 .profileimage {
@@ -105,7 +106,7 @@ export default {
 .calculated {
   align-self: auto;
   margin-left: 30px;
-  font-size: 24px;
+  font-size: 1.2em;
   text-align: right;
   font-weight: 600;
 }

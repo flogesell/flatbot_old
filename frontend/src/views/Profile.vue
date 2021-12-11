@@ -1,9 +1,9 @@
 <template>
   <div class="profile" >
     <section class="content">
-    <img class="profileimage" :src="image">
-    <span class="username">{{user.firstName + " " + user.lastName}}</span>
-    <span class="useremail">{{user.email}}</span>
+      <img class="profileimage" :src="image">
+      <span class="username">{{user.firstName + " " + user.lastName}}</span>
+      <span class="useremail">{{user.email}}</span>
     </section>
     <section class="content">
       <h1 class="section-header">Allgemein</h1>
@@ -26,7 +26,7 @@ export default {
     };
   },
   created: function(){
-        this.getImage();
+    this.getImage();
   },
   methods: {
     async getImage() {

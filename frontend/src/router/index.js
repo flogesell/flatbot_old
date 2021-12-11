@@ -3,6 +3,7 @@ import VueRouter from "vue-router";
 import store from "../store";
 
 import Login from "../views/Login.vue";
+import EmailLogin from "../views/LoginEmail.vue";
 import Register from "../views/Register.vue";
 import Dashboard from "../views/Dashboard.vue";
 import Statistics from "../views/Statistics.vue";
@@ -34,6 +35,14 @@ const router = new VueRouter({
       path: "/login",
       name: "Login",
       component: Login,
+      meta: {
+        guest: true,
+      },
+    },
+    {
+      path: "/login-email",
+      name: "Login",
+      component: EmailLogin,
       meta: {
         guest: true,
       },

@@ -36,12 +36,11 @@ body, html {
 }
 
 #app {
-  font-family: 'Montserrat';
+  font-family: 'Roboto';
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
   color: #2c3e50;
-  margin-bottom: 100px;
 }
 
 

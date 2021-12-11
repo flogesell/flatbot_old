@@ -3,7 +3,7 @@ const flat = express.Router();
 const db = require('../config/database');
 const Flats = require('../models/flat')
 const Flatmates = require('../models/flatmate')
-const Users = require('../models/user')
+const user = require('../models/user')
 
 const authentificate = require('../middleware/authentification.js')
 
@@ -34,7 +34,17 @@ flat.get('/mates/list', async function (req, res) {
 flat.get('/mates', authentificate, async function (req, res) {
   const id = req.user.id;
   let mates = [];
+  const owner = await Flats.findOne({ where: {owner: id}})
 
+  if(owner) {
+    const flatMates = await Flatmates.findAll({ where: {flat_id: owner.id}});
+    flatMates.forEach(e => mates.push(e))
+  } else {
+    const owner = await Flats.findOne({ where: {owner: id}})
+    const flatMates = await Flatmates.findAll({ where: {flat_id: id}});
+    flatMates.forEach(e => mates.push(e))
+  }
+  
   res.status(200).json(mates);
 });
 

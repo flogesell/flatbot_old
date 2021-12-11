@@ -41,7 +41,7 @@ export default {
         },
         {
           id: "ef5d2090-8a59-4746-b3safasdf0-efbd2f7fe63e",
-          name: "Liz",
+          name: "Flo",
           description: "Netto",
           betrag: 10.77,
           date: Date.now(),
@@ -97,10 +97,14 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+@import "@/assets/styles/variables.scss";
+
 .quick-view {
-  background: #219ed6;
+  background: $ui-gradient;
   height: 200px;
   position: relative;
+  margin: 10px auto 0;
+  border-radius: 10px;
 
   .flex-container {
     width: 30%;
@@ -122,7 +126,7 @@ export default {
   display: flex;
   justify-content: center;
   align-items: center;
-  font-size: 50px;
+  font-size: 32px;
   font-weight: 200;
   cursor: pointer;
 }
@@ -145,8 +149,9 @@ export default {
 }
 
 .dashboard-desc {
-  font-size: 32px;
+  font-size: 16px;
   color: white;
+  height: 50px;
 }
 
 .dashboard-money {
@@ -158,7 +163,7 @@ export default {
 
 @media only screen and (max-width: 1024px) {
   .quick-view {
-    width: 100%;
+    width: 90%;
 
     .flex-container {
     width: 100%;
